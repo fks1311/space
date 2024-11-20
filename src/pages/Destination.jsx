@@ -30,7 +30,7 @@ export const Destination = () => {
                 </Items>
               ))}
             </List>
-            <PlanetName>{destination[active].name}</PlanetName>
+            <PlanetName>{destination[active].name.toLocaleUpperCase()}</PlanetName>
             <Description>{destination[active].description}</Description>
             <div style={{ background: "rgba(255, 255, 255, 0.1)", height: "2px", border: "0" }} />
             <Statistics>
@@ -56,7 +56,7 @@ const Layout = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   gap: 24px;
 `;
 
@@ -72,8 +72,10 @@ const Title = styled.div`
   ${theme.baseStyles.text5}
 `;
 const Content = styled.div`
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 `;
 const PlanetImg = styled.img`
   padding: 2rem;
