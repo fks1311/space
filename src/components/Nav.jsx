@@ -52,6 +52,8 @@ export const Nav = () => {
 const Layout = styled.div`
   width: ${({ width }) => width}px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-image: url(${({ $bgImg }) => $bgImg});
   background-size: cover;
   background-repeat: no-repeat;

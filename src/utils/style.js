@@ -10,6 +10,13 @@ const breakpoints = {
   desktop: `screen and (max-width: ${devices.desktop})`,
 };
 
+const color = {
+  BLUE_900: `#0B0D17`,
+  BLUE_300: `#D0D6F9`,
+  WHITE: `#FFFFFF`,
+};
+
 export const theme = {
   breakpoints,
+  color,
 };
