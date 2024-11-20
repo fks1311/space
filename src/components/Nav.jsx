@@ -6,6 +6,7 @@ import home from "assets/home/background-home-desktop.jpg";
 import destination from "assets/destination/background-destination-desktop.jpg";
 import crew from "assets/crew/background-crew-desktop.jpg";
 import tech from "assets/technology/background-technology-desktop.jpg";
+import { theme } from "utils/style";
 
 export const Nav = () => {
   const windowSize = useWindowSize();
@@ -13,15 +14,15 @@ export const Nav = () => {
   const location = useLocation();
   const lists = [
     {
-      name: "00 HOME",
+      name: "HOME",
       link: "/",
     },
     {
-      name: "01 DESTINATION",
+      name: "DESTINATION",
       link: "/destination",
     },
-    { name: "02 CREW", link: "/crew" },
-    { name: "03 TECHNOLOGY", link: "/tech" },
+    { name: "CREW", link: "/crew" },
+    { name: "TECHNOLOGY", link: "/tech" },
   ];
 
   const bgImg = {
@@ -39,6 +40,7 @@ export const Nav = () => {
         <NavBox>
           {lists.map((i, idx) => (
             <Items key={idx} $match={i.link === location.pathname ? true : false} onClick={() => navigate(i.link)}>
+              <strong>{`0${idx}`}</strong>
               {i.name}
             </Items>
           ))}
@@ -91,6 +93,11 @@ const Items = styled.div`
   color: white;
   cursor: pointer;
   border-bottom: ${({ $match }) => $match && `3px solid white`};
+  ${theme.baseStyles.text8}
+  strong {
+    margin-right: 10px;
+    font-weight: bold;
+  }
   &:hover {
     border-bottom: 3px solid rgba(255, 255, 255, 0.5);
   }

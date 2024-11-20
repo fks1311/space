@@ -1,5 +1,6 @@
 import { DefaultPage } from "components/DefaultPage";
 import styled from "styled-components";
+import { theme } from "utils/style";
 
 export const Home = () => {
   return (
@@ -39,12 +40,15 @@ const Message = styled.div`
   h1 {
     color: white;
     font-size: clamp(5rem, 1.183rem + 16.285vw, 9rem);
+    ${theme.baseStyles.text1}
   }
   span {
     font-size: clamp(1rem, 0.284rem + 3.053vw, 1.75rem);
+    ${theme.baseStyles.text5}
   }
   p {
     line-height: 2rem;
+    ${theme.baseStyles.text9}
   }
 `;
 const ButtonContainer = styled.div`
@@ -66,6 +70,7 @@ const Button = styled.button`
   padding: 100px 30px;
   font-size: clamp(1.125rem, 0.29rem + 3.562vw, 2rem);
   color: ${({ theme: { color } }) => color.BLUE_900};
+  ${theme.baseStyles.text4}
   border-radius: 50%;
   border: none;
   &:hover {
