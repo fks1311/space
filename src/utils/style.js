@@ -1,3 +1,6 @@
+import { css } from "styled-components";
+import "utils/font.css";
+
 const devices = {
   mobile: `375px`,
   tablet: `768px`,
@@ -16,7 +19,50 @@ const color = {
   WHITE: `#FFFFFF`,
 };
 
+const baseStyles = {
+  text1: css`
+    font-family: Bellefair;
+    font-size: 144px;
+  `,
+  text2: css`
+    font-family: Bellefair;
+    font-size: 100px;
+  `,
+  text3: css`
+    font-family: Bellefair;
+    font-size: 56px;
+  `,
+  text4: css`
+    font-family: Bellefair;
+    font-size: 32px;
+  `,
+  text5: css`
+    font-family: BarlowCondensed;
+    font-size: 28px;
+    letter-spacing: 4px;
+  `,
+  text6: css`
+    font-family: Bellefair;
+    font-size: 28px;
+  `,
+  text7: css`
+    font-family: BarlowCondensed;
+    font-size: 14px;
+    letter-spacing: 2px;
+  `,
+  text8: css`
+    font-family: BarlowCondensed;
+    font-size: 16px;
+    letter-spacing: 2px;
+  `,
+  text9: css`
+    font-family: BarlowCondensed;
+    font-size: 18px;
+  `,
+};
+
 export const theme = {
   breakpoints,
   color,
+  baseStyles,
 };
