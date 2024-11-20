@@ -61,8 +61,14 @@ const baseStyles = {
   `,
 };
 
+const font = {
+  Bellefair: "Bellefair",
+  BarlowCondensed: "Barlow Condensed",
+};
+
 export const theme = {
   breakpoints,
+  font,
   color,
   baseStyles,
 };
