@@ -36,7 +36,7 @@ export const Nav = () => {
     <Layout width={windowSize} $bgImg={bgImg[location.pathname]}>
       <Header>
         <Img src={logo} alt="logo" />
-        <Bar />
+        <Bar className="bar" />
         <NavBox>
           {lists.map((i, idx) => (
             <Items key={idx} $match={i.link === location.pathname ? true : false} onClick={() => navigate(i.link)}>
@@ -59,15 +59,24 @@ const Layout = styled.div`
   background-image: url(${({ $bgImg }) => $bgImg});
   background-size: cover;
   background-repeat: no-repeat;
+  aspect-ratio: 16/9;
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  }
 `;
 const Header = styled.div`
   display: flex;
   align-items: center;
   padding-top: 40px;
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+    padding: 0px;
+  }
 `;
 
 const Img = styled.img`
   margin: 0px 4rem;
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+    margin: 0px 2rem;
+  }
 `;
 const Bar = styled.div`
   width: 30%;
@@ -76,6 +85,9 @@ const Bar = styled.div`
   flex-grow: 1;
   position: relative;
   left: 2rem;
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+    display: none;
+  }
 `;
 const NavBox = styled.div`
   height: 96px;
@@ -85,6 +97,8 @@ const NavBox = styled.div`
   padding: 0px 64px;
   flex-grow: 1;
   background-color: rgba(255, 255, 255, 0.1);
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  }
 `;
 const Items = styled.div`
   height: 100%;
