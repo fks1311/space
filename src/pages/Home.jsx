@@ -33,7 +33,6 @@ const Layout = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 5rem;
-    padding: 0px 5rem;
   }
 `;
 

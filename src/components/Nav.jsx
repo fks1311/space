@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useWindowSize } from "utils/useWindowsize";
 import { theme } from "utils/style";
 import logo from "assets/shared/logo.svg";
+import hamburger from "assets/shared/icon-hamburger.svg";
 
 import home from "assets/home/background-home-desktop.jpg";
 import home_tablet from "assets/home/background-home-tablet.jpg";
@@ -65,24 +66,30 @@ export const Nav = () => {
       width={windowSize}
       pathname={location.pathname}
       $bgImg={
-        windowSize <= 375
+        windowSize <= 768
           ? bgImg[location.pathname].mobile
-          : windowSize <= 768
+          : windowSize <= 1280
           ? bgImg[location.pathname].tablet
           : bgImg[location.pathname].desktop
       }
     >
       <Header>
         <Img src={logo} alt="logo" />
-        <Bar className="bar" />
-        <NavBox>
-          {lists.map((i, idx) => (
-            <Items key={idx} $match={i.link === location.pathname ? true : false} onClick={() => navigate(i.link)}>
-              <strong>{`0${idx}`}</strong>
-              {i.name}
-            </Items>
-          ))}
-        </NavBox>
+        {windowSize > 768 ? (
+          <>
+            <Bar className="bar" />
+            <NavBox>
+              {lists.map((i, idx) => (
+                <Items key={idx} $match={i.link === location.pathname ? true : false} onClick={() => navigate(i.link)}>
+                  <strong>{`0${idx}`}</strong>
+                  {i.name}
+                </Items>
+              ))}
+            </NavBox>
+          </>
+        ) : (
+          <img src={hamburger} />
+        )}
       </Header>
       <Outlet />
     </Layout>
@@ -90,15 +97,13 @@ export const Nav = () => {
 };
 
 const Layout = styled.div`
-  width: ${({ width }) => width}px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   background-image: url(${({ $bgImg }) => $bgImg});
   background-size: cover;
   background-repeat: no-repeat;
-  @media ${({ theme: { devices } }) => devices.tablet} {
-    height: ${({ pathname }) => pathname !== "/" && `auto`};
+  @media ${({ theme: { devices } }) => devices.desktop} {
+    height: 100vh;
   }
 `;
 const Header = styled.div`
@@ -108,12 +113,19 @@ const Header = styled.div`
   @media ${({ theme: { devices } }) => devices.tablet} {
     padding: 0px;
   }
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    justify-content: space-between;
+    padding: 1rem;
+  }
 `;
 
 const Img = styled.img`
   margin: 0px 4rem;
   @media ${({ theme: { devices } }) => devices.tablet} {
     margin: 0px 2rem;
+  }
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    margin: 0px;
   }
 `;
 const Bar = styled.div`

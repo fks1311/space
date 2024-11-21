@@ -157,4 +157,8 @@ const Statistics = styled.div`
       align-items: center;
     }
   }
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    flex-direction: column;
+    gap: 24px;
+  }
 `;

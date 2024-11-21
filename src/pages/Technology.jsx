@@ -123,6 +123,9 @@ const Intro = styled.div`
 const Name = styled.div`
   ${theme.baseStyles.text3}
   color:${({ theme: { color } }) => color.WHITE};
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    text-align: center;
+  }
 `;
 const Destination = styled.div`
   ${theme.baseStyles.text9}
