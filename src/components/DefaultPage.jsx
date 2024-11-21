@@ -18,6 +18,6 @@ const Layout = styled.div`
   align-items: center;
   padding: 48px 0px;
   @media ${({ theme: { devices } }) => devices.tablet} {
-    padding: 40px 0px;
+    padding: ${({ pathname }) => (pathname === "/crew" ? `40px 0px 0px 0px` : `40px 0px`)};
   }
 `;

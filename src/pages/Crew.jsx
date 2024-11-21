@@ -15,7 +15,7 @@ export const Crew = () => {
           <strong>02</strong> MEET YOUT CREW
         </Title>
         <Content>
-          <Left>
+          <Left className="left">
             <Explanation>
               <Role>{crew[active].role.toLocaleUpperCase()}</Role>
               <Name>{crew[active].name.toLocaleUpperCase()}</Name>
@@ -27,7 +27,7 @@ export const Crew = () => {
               ))}
             </Pagenation>
           </Left>
-          <Right>
+          <Right className="right">
             <img src={crew[active].images} />
           </Right>
         </Content>
@@ -42,6 +42,9 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 90%;
+  }
 `;
 
 const Title = styled.div`
@@ -62,6 +65,9 @@ const Content = styled.div`
   // justify-content: center;
   align-items: center;
   gap: 32px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    flex-direction: column;
+  }
 `;
 
 const Left = styled.div`
@@ -70,6 +76,11 @@ const Left = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    align-items: center;
+    gap: 24px;
+    padding: 2rem;
+  }
 `;
 const Explanation = styled.div`
   height: 100%;
@@ -78,6 +89,10 @@ const Explanation = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 24px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    align-items: center;
+    text-align: center;
+  }
 `;
 const Role = styled.div`
   ${theme.baseStyles.text4};
@@ -93,11 +108,17 @@ const Bio = styled.div`
   ${theme.baseStyles.text9};
   color: ${({ theme: { color } }) => color.BLUE_300};
   line-height: 2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+  }
 `;
 const Pagenation = styled.div`
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    margin-top: 2rem;
+    margin-bottom: 0px;
+  }
 `;
 const Page = styled.div`
   background-color: ${({ active, idx }) => (active === idx ? "white" : "rgba(255, 255, 255, 0.5)")};
