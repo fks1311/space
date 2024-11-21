@@ -3,8 +3,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { data } from "utils/data";
 import { theme } from "utils/style";
+import { useWindowSize } from "utils/useWindowsize";
 
 export const Technology = () => {
+  const windowSize = useWindowSize();
   const { technology } = data;
   const [active, setActive] = useState(0);
 
@@ -30,7 +32,11 @@ export const Technology = () => {
             </Destinations>
           </Left>
           <Right>
-            <img src={technology[active].images.portrait} />
+            {windowSize > 375 && windowSize <= 768 ? (
+              <img src={technology[active].images.landscape} />
+            ) : (
+              <img src={technology[active].images.portrait} />
+            )}
           </Right>
         </Content>
       </Layout>
@@ -45,6 +51,9 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 90%;
+  }
 `;
 
 const Title = styled.div`
@@ -63,6 +72,9 @@ const Content = styled.div`
   display: flex;
   height: 100%;
   gap: 32px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    flex-direction: column-reverse;
+  }
 `;
 
 const Left = styled.div`
@@ -70,11 +82,17 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   gap: 64px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    flex-direction: column;
+  }
 `;
 const IndexBtn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    flex-direction: row;
+  }
 `;
 const Index = styled.div`
   height: 80px;
@@ -93,6 +111,9 @@ const Destinations = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    align-items: center;
+  }
 `;
 const Intro = styled.div`
   ${theme.baseStyles.text4}
@@ -107,6 +128,10 @@ const Destination = styled.div`
   ${theme.baseStyles.text9}
   color:${({ theme: { color } }) => color.BLUE_300};
   line-height: 2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 80%;
+    text-align: center;
+  }
 `;
 
 const Right = styled.div`
@@ -114,7 +139,10 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  img {
-    height: 80%;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    img {
+      height: 80%;
+      width: 100%;
+    }
   }
 `;

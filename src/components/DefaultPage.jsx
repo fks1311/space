@@ -19,5 +19,6 @@ const Layout = styled.div`
   padding: 48px 0px;
   @media ${({ theme: { devices } }) => devices.tablet} {
     padding: ${({ pathname }) => (pathname === "/crew" ? `40px 0px 0px 0px` : `40px 0px`)};
+    justify-content: center;
   }
 `;

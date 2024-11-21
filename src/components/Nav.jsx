@@ -63,6 +63,7 @@ export const Nav = () => {
   return (
     <Layout
       width={windowSize}
+      pathname={location.pathname}
       $bgImg={
         windowSize <= 375
           ? bgImg[location.pathname].mobile
@@ -98,14 +99,13 @@ const Layout = styled.div`
   background-repeat: no-repeat;
   aspect-ratio: 16/9;
   @media ${({ theme: { devices } }) => devices.tablet} {
-    height: auto;
+    height: ${({ pathname }) => pathname !== "/" && `auto`};
   }
 `;
 const Header = styled.div`
   display: flex;
   align-items: center;
   padding-top: 40px;
-
   @media ${({ theme: { devices } }) => devices.tablet} {
     padding: 0px;
   }
@@ -147,7 +147,8 @@ const Items = styled.div`
   color: white;
   cursor: pointer;
   border-bottom: ${({ $match }) => $match && `3px solid white`};
-  ${theme.baseStyles.text8}
+  // ${theme.baseStyles.text8}
+  font-size: clamp(0.875rem, 0.756rem + 0.509vw, 1rem);
   strong {
     margin-right: 10px;
     font-weight: bold;
@@ -156,3 +157,4 @@ const Items = styled.div`
     border-bottom: 3px solid rgba(255, 255, 255, 0.5);
   }
 `;
+// clamp(.875rem,.756rem + .509vw,1rem)
