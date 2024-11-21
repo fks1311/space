@@ -1,16 +1,16 @@
 import { css } from "styled-components";
 import "utils/font.css";
 
-const devices = {
+const breakpoints = {
   mobile: `375px`,
   tablet: `768px`,
   desktop: `1440px`,
 };
 
-const breakpoints = {
-  mobile: `screen and (max-width: ${devices.mobile})`,
-  tablet: `screen and (max-width: ${devices.tablet})`,
-  desktop: `screen and (max-width: ${devices.desktop})`,
+const devices = {
+  mobile: `screen and (max-width: ${breakpoints.mobile})`,
+  tablet: `screen and (max-width: ${breakpoints.tablet})`,
+  desktop: `screen and (max-width: ${breakpoints.desktop})`,
 };
 
 const color = {
@@ -67,7 +67,7 @@ const font = {
 };
 
 export const theme = {
-  breakpoints,
+  devices,
   font,
   color,
   baseStyles,

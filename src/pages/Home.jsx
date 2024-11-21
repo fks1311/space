@@ -29,7 +29,7 @@ const Layout = styled.div`
   display: flex;
   padding: 128px 0px;
   width: 1100px;
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
     flex-direction: column;
     align-items: center;
     gap: 5rem;
@@ -56,7 +56,7 @@ const Message = styled.div`
     line-height: 2rem;
     ${theme.baseStyles.text9}
   }
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
     align-items: center;
     p {
       width: 80%;

@@ -97,21 +97,21 @@ const Layout = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   aspect-ratio: 16/9;
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
   }
 `;
 const Header = styled.div`
   display: flex;
   align-items: center;
   padding-top: 40px;
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
     padding: 0px;
   }
 `;
 
 const Img = styled.img`
   margin: 0px 4rem;
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
     margin: 0px 2rem;
   }
 `;
@@ -122,7 +122,7 @@ const Bar = styled.div`
   flex-grow: 1;
   position: relative;
   left: 2rem;
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
     display: none;
   }
 `;
@@ -134,7 +134,7 @@ const NavBox = styled.div`
   padding: 0px 64px;
   flex-grow: 1;
   background-color: rgba(255, 255, 255, 0.1);
-  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+  @media ${({ theme: { devices } }) => devices.tablet} {
   }
 `;
 const Items = styled.div`
