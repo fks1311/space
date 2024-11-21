@@ -2,15 +2,15 @@ import { css } from "styled-components";
 import "utils/font.css";
 
 const breakpoints = {
-  mobile: `375px`,
-  tablet: `768px`,
-  desktop: `1440px`,
+  mobile: `768px`,
+  tablet: `1280px`,
+  desktop: `1281px`,
 };
 
 const devices = {
   mobile: `screen and (max-width: ${breakpoints.mobile})`,
   tablet: `screen and (max-width: ${breakpoints.tablet})`,
-  desktop: `screen and (max-width: ${breakpoints.desktop})`,
+  desktop: `screen and (min-width: ${breakpoints.desktop})`,
 };
 
 const color = {

@@ -32,7 +32,7 @@ export const Technology = () => {
             </Destinations>
           </Left>
           <Right>
-            {windowSize > 375 && windowSize <= 768 ? (
+            {windowSize > 768 && windowSize <= 1280 ? (
               <img src={technology[active].images.landscape} />
             ) : (
               <img src={technology[active].images.portrait} />
