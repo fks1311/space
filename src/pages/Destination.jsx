@@ -32,7 +32,7 @@ export const Destination = () => {
             </List>
             <PlanetName>{destination[active].name.toLocaleUpperCase()}</PlanetName>
             <Description>{destination[active].description}</Description>
-            <div style={{ background: "rgba(255, 255, 255, 0.1)", height: "2px", border: "0" }} />
+            <Bar />
             <Statistics>
               <div>
                 <span>AVG. DISTANCE</span>
@@ -51,13 +51,14 @@ export const Destination = () => {
 };
 
 const Layout = styled.div`
-  // padding: 48px 0px;
   height: 100%;
   width: 70%;
   display: flex;
   flex-direction: column;
-  // justify-content: space-evenly;
   gap: 24px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 90%;
+  }
 `;
 
 const Title = styled.div`
@@ -76,19 +77,34 @@ const Content = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 const PlanetImg = styled.img`
   padding: 2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    height: 300px;
+    width: 300px;
+  }
 `;
 const Destinations = styled.div`
   width: 40%;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 80%;
+    align-items: center;
+  }
 `;
 const List = styled.div`
   display: flex;
   gap: 2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    gap: 3rem;
+  }
 `;
 const Items = styled.div`
   font-size: clamp(0.875rem, 0.756rem + 0.509vw, 1rem);
@@ -110,6 +126,14 @@ const Description = styled.p`
   color: ${({ theme: { color } }) => color.BLUE_300};
   ${theme.baseStyles.text9}
   line-height:2rem;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    text-align: center;
+  }
+`;
+const Bar = styled.div`
+  background: rgba(255, 255, 255, 0.1);
+  height: 2px;
+  border: 0;
 `;
 const Statistics = styled.div`
   display: flex;
@@ -124,5 +148,13 @@ const Statistics = styled.div`
   p {
     ${theme.baseStyles.text6};
     color: ${({ theme: { color } }) => color.WHITE};
+  }
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    width: 100%;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;

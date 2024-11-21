@@ -98,12 +98,14 @@ const Layout = styled.div`
   background-repeat: no-repeat;
   aspect-ratio: 16/9;
   @media ${({ theme: { devices } }) => devices.tablet} {
+    height: auto;
   }
 `;
 const Header = styled.div`
   display: flex;
   align-items: center;
   padding-top: 40px;
+
   @media ${({ theme: { devices } }) => devices.tablet} {
     padding: 0px;
   }
@@ -135,6 +137,7 @@ const NavBox = styled.div`
   flex-grow: 1;
   background-color: rgba(255, 255, 255, 0.1);
   @media ${({ theme: { devices } }) => devices.tablet} {
+    padding: 0px 62px;
   }
 `;
 const Items = styled.div`

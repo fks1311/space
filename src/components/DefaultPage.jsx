@@ -12,8 +12,12 @@ export const DefaultPage = forwardRef((props, ref) => {
   );
 });
 const Layout = styled.div`
-  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: ${({ pathname }) => (pathname === "/tech" ? `flex-end` : "center")};
   align-items: center;
+  padding: 48px 0px;
+  @media ${({ theme: { devices } }) => devices.tablet} {
+    padding: 40px 0px;
+  }
 `;
