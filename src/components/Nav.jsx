@@ -1,12 +1,24 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useWindowSize } from "utils/useWindowsize";
-import logo from "assets/shared/logo.svg";
-import home from "assets/home/background-home-desktop.jpg";
-import destination from "assets/destination/background-destination-desktop.jpg";
-import crew from "assets/crew/background-crew-desktop.jpg";
-import tech from "assets/technology/background-technology-desktop.jpg";
 import { theme } from "utils/style";
+import logo from "assets/shared/logo.svg";
+
+import home from "assets/home/background-home-desktop.jpg";
+import home_tablet from "assets/home/background-home-tablet.jpg";
+import home_mobile from "assets/home/background-home-mobile.jpg";
+
+import destination from "assets/destination/background-destination-desktop.jpg";
+import destination_tablet from "assets/destination/background-destination-tablet.jpg";
+import destination_mobile from "assets/destination/background-destination-mobile.jpg";
+
+import crew from "assets/crew/background-crew-desktop.jpg";
+import crew_tablet from "assets/crew/background-crew-tablet.jpg";
+import crew_mobile from "assets/crew/background-crew-mobile.jpg";
+
+import tech from "assets/technology/background-technology-desktop.jpg";
+import tech_tablet from "assets/technology/background-technology-tablet.jpg";
+import tech_mobile from "assets/technology/background-technology-mobile.jpg";
 
 export const Nav = () => {
   const windowSize = useWindowSize();
@@ -26,14 +38,39 @@ export const Nav = () => {
   ];
 
   const bgImg = {
-    "/": home,
-    "/destination": destination,
-    "/crew": crew,
-    "/tech": tech,
+    "/": {
+      desktop: home,
+      tablet: home_tablet,
+      mobile: home_mobile,
+    },
+    "/destination": {
+      desktop: destination,
+      tablet: destination_tablet,
+      mobile: destination_mobile,
+    },
+    "/crew": {
+      desktop: crew,
+      tablet: crew_tablet,
+      mobile: crew_mobile,
+    },
+    "/tech": {
+      desktop: tech,
+      tablet: tech_tablet,
+      mobile: tech_mobile,
+    },
   };
 
   return (
-    <Layout width={windowSize} $bgImg={bgImg[location.pathname]}>
+    <Layout
+      width={windowSize}
+      $bgImg={
+        windowSize <= 375
+          ? bgImg[location.pathname].mobile
+          : windowSize <= 768
+          ? bgImg[location.pathname].tablet
+          : bgImg[location.pathname].desktop
+      }
+    >
       <Header>
         <Img src={logo} alt="logo" />
         <Bar className="bar" />

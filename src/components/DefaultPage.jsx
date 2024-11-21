@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const DefaultPage = forwardRef((props, ref) => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   return (
     <Layout className="defaultpage" pathname={pathname}>
       {props.children}

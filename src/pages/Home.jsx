@@ -29,6 +29,12 @@ const Layout = styled.div`
   display: flex;
   padding: 128px 0px;
   width: 1100px;
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    padding: 0px 5rem;
+  }
 `;
 
 const Message = styled.div`
@@ -37,18 +43,25 @@ const Message = styled.div`
   gap: 24px;
   flex: 1;
   color: ${({ theme: { color } }) => color.BLUE_300};
+  span {
+    font-size: clamp(1rem, 0.284rem + 3.053vw, 1.75rem);
+    ${theme.baseStyles.text5}
+  }
   h1 {
     color: white;
     font-size: clamp(5rem, 1.183rem + 16.285vw, 9rem);
     ${theme.baseStyles.text1}
   }
-  span {
-    font-size: clamp(1rem, 0.284rem + 3.053vw, 1.75rem);
-    ${theme.baseStyles.text5}
-  }
   p {
     line-height: 2rem;
     ${theme.baseStyles.text9}
+  }
+  @media ${({ theme: { breakpoints } }) => breakpoints.tablet} {
+    align-items: center;
+    p {
+      width: 80%;
+      text-align: center;
+    }
   }
 `;
 const ButtonContainer = styled.div`
