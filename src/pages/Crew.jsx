@@ -15,7 +15,7 @@ export const Crew = () => {
           <strong>02</strong> MEET YOUT CREW
         </Title>
         <Content>
-          <Left className="left">
+          <Left>
             <Explanation>
               <Role>{crew[active].role.toLocaleUpperCase()}</Role>
               <Name>{crew[active].name.toLocaleUpperCase()}</Name>
@@ -27,7 +27,7 @@ export const Crew = () => {
               ))}
             </Pagenation>
           </Left>
-          <Right className="right">
+          <Right>
             <img src={crew[active].images} />
           </Right>
         </Content>

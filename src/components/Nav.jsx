@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { MobileNav } from "./MobileNav";
 import { useWindowSize } from "utils/useWindowsize";
 import { theme } from "utils/style";
+
 import logo from "assets/shared/logo.svg";
-import hamburger from "assets/shared/icon-hamburger.svg";
 
 import home from "assets/home/background-home-desktop.jpg";
 import home_tablet from "assets/home/background-home-tablet.jpg";
@@ -25,6 +27,7 @@ export const Nav = () => {
   const windowSize = useWindowSize();
   const navigate = useNavigate();
   const location = useLocation();
+  const [active, setActive] = useState(false);
   const lists = [
     {
       name: "HOME",
@@ -61,6 +64,26 @@ export const Nav = () => {
     },
   };
 
+  const ListItems = () => {
+    return (
+      <>
+        {lists.map((i, idx) => (
+          <Items
+            key={idx}
+            $match={i.link === location.pathname ? true : false}
+            onClick={() => {
+              navigate(i.link);
+              setActive(!active);
+            }}
+          >
+            <strong>{`0${idx}`}</strong>
+            {i.name}
+          </Items>
+        ))}
+      </>
+    );
+  };
+
   return (
     <Layout
       width={windowSize}
@@ -74,21 +97,20 @@ export const Nav = () => {
       }
     >
       <Header>
-        <Img src={logo} alt="logo" />
+        <Img src={logo} alt="logo" onClick={() => navigate("/")} />
         {windowSize > 768 ? (
           <>
-            <Bar className="bar" />
+            <Bar />
             <NavBox>
-              {lists.map((i, idx) => (
-                <Items key={idx} $match={i.link === location.pathname ? true : false} onClick={() => navigate(i.link)}>
-                  <strong>{`0${idx}`}</strong>
-                  {i.name}
-                </Items>
-              ))}
+              <ListItems />
             </NavBox>
           </>
         ) : (
-          <img src={hamburger} />
+          <>
+            <MobileNav active={active} setActive={setActive}>
+              <ListItems />
+            </MobileNav>
+          </>
         )}
       </Header>
       <Outlet />
@@ -104,6 +126,10 @@ const Layout = styled.div`
   background-repeat: no-repeat;
   @media ${({ theme: { devices } }) => devices.desktop} {
     height: 100vh;
+  }
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    position: relative;
+    height: 100%;
   }
 `;
 const Header = styled.div`
@@ -121,6 +147,7 @@ const Header = styled.div`
 
 const Img = styled.img`
   margin: 0px 4rem;
+  cursor: pointer;
   @media ${({ theme: { devices } }) => devices.tablet} {
     margin: 0px 2rem;
   }
@@ -159,12 +186,19 @@ const Items = styled.div`
   cursor: pointer;
   border-bottom: ${({ $match }) => $match && `3px solid white`};
   ${theme.baseStyles.text8}
-  // font-size: clamp(0.875rem, 0.756rem + 0.509vw, 1rem);
   strong {
     margin-right: 10px;
     font-weight: bold;
   }
   &:hover {
     border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  }
+  @media ${({ theme: { devices } }) => devices.mobile} {
+    height: 20px;
+    border-bottom: 0px;
+    border-right: ${({ $match }) => $match && `3px solid white`};
+    &:hover {
+      border-bottom: 0px;
+    }
   }
 `;

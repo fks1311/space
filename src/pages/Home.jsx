@@ -1,8 +1,11 @@
 import { DefaultPage } from "components/DefaultPage";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "utils/style";
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <DefaultPage>
       <Layout>
@@ -17,7 +20,7 @@ export const Home = () => {
         <ButtonContainer>
           <div style={{ flex: 1 }} />
           <ButtonLayout>
-            <Button>EXPLORE</Button>
+            <Button onClick={() => navigate("/destination")}>EXPLORE</Button>
           </ButtonLayout>
         </ButtonContainer>
       </Layout>

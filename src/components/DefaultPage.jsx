@@ -5,11 +5,7 @@ import styled from "styled-components";
 export const DefaultPage = forwardRef((props, ref) => {
   const { pathname } = useLocation();
 
-  return (
-    <Layout className="defaultpage" pathname={pathname}>
-      {props.children}
-    </Layout>
-  );
+  return <Layout pathname={pathname}>{props.children}</Layout>;
 });
 const Layout = styled.div`
   width: 100%;
