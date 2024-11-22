@@ -9,9 +9,10 @@ export const DefaultPage = forwardRef((props, ref) => {
 });
 const Layout = styled.div`
   width: 100%;
+  height: 100%;
+  align-items: flex-end;
   display: flex;
   justify-content: ${({ pathname }) => (pathname === "/tech" ? `flex-end` : "center")};
-  align-items: center;
   padding: 48px 0px;
   @media ${({ theme: { devices } }) => devices.tablet} {
     height: ${({ pathname }) => pathname === "/" && "100%"};
